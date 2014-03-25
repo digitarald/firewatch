@@ -57,6 +57,10 @@ function watch(done) {
 					break;
 				case 3:
 					var parts = line.trim().match(/([\w\s+()-]+[\w)])\s+([\d.]+)/);
+					if (!parts.length) {
+						section++;
+						break;
+					}
 					result.mem[parts[1].toLowerCase()] = parts[2];
 					break;
 			}
@@ -65,8 +69,8 @@ function watch(done) {
 
 		clivas.clear();
 		clivas.line(device);
-		clivas.line('{yellow:{20:free:}} {bold:{8:' + result.mem.free + '}}');
-		clivas.line('{yellow:{20:cache:}} {bold:{8:' + result.mem.cache + '}}');
+		clivas.line('{yellow:{20:free:}} {bold:{8:' + (result.mem.free || '-') + '}}');
+		clivas.line('{yellow:{20:cache:}} {bold:{8:' + (result.mem.cache || '-') + '}}');
 		clivas.line('{yellow:{4:pid} {15:app} {8:uss} {8:pss}}');
 
 		result.apps.forEach(function(app) {

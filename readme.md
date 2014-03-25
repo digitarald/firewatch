@@ -28,6 +28,8 @@ pid  app             uss      pss
 7054 Captain Rogers  38.1     45.5
 ```
 
+The numbers update real-time (as fast as `b2g-info` can provide numbers). This display is available as soon as you plug in any device.
+
 ## Dependencies
 
  * `node` and `npm`
