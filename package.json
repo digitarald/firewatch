@@ -1,0 +1,15 @@
+{
+  "name": "firewatch",
+  "version": "0.0.0",
+  "description": "Firefox OS memory watch",
+  "keywords": [
+    "firefoxos",
+    "firefox-os",
+    "b2g"
+  ],
+  "author": "Harald Kirschner <harald@digitarald.com>",
+  "license": "MIT",
+  "dependencies": {
+    "clivas": "^0.1.4"
+  }
+}
