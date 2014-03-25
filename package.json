@@ -10,6 +10,7 @@
   "author": "Harald Kirschner <harald@digitarald.com>",
   "license": "MIT",
   "dependencies": {
-    "clivas": "^0.1.4"
+    "clivas": "^0.1.4",
+    "nomnom": "^1.6.2"
   }
 }
