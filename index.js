@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 var clivas = require('clivas');
 var exec = require('child_process').exec;
 
