@@ -5,12 +5,20 @@
   "keywords": [
     "firefoxos",
     "firefox-os",
-    "b2g"
+    "b2g",
+    "b2g-info"
   ],
+  "scripts": {
+    "test": "./node_modules/mocha/bin/mocha"
+  },
   "author": "Harald Kirschner <harald@digitarald.com>",
   "license": "MIT",
   "dependencies": {
     "clivas": "^0.1.4",
     "nomnom": "^1.6.2"
+  },
+  "devDependencies": {
+    "mocha": "^1.18.2",
+    "should": "^3.2.0-beta1"
   }
 }

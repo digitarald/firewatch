@@ -6,11 +6,6 @@ var opts = require("nomnom")
 		abbr: 'a',
 		help: 'Filter list to one app (regexp format)'
 	})
-	.option('hidden', {
-		abbr: 'h',
-		flag: true,
-		help: 'Show hidden processes'
-	})
 	.option('interval', {
 		abbr: 'i',
 		default: 0,
@@ -18,14 +13,17 @@ var opts = require("nomnom")
 	})
 	.parse();
 
-var device = null;
+var Snapshot = require('./snapshot');
 
 var filter = null;
 if (opts.app) {
 	filter = new RegExp(opts.app, 'i');
 }
 
-var Snapshot = require('./snapshot');
+var device = null;
+
+
+clivas.cursor(false);
 
 function watch(done) {
 	if (!device) {
@@ -36,9 +34,10 @@ function watch(done) {
 				return line.split(/[\s]+/);
 			});
 			if (!devices.length) {
-				done(new Error('No device'));
+				done();
 				return;
 			}
+			clivas.clear();
 			device = devices[0][0];
 			done();
 		});
@@ -48,18 +47,27 @@ function watch(done) {
 	var started = Date.now();
 	exec('adb shell b2g-info', function(err, stdout, strerr) {
 		if (err) {
-			done(err);
+			done('disconnected');
 			return;
 		}
 		if (stdout.toString().indexOf('b2g-info: not found') > -1) {
-			clivas.line('{red:device doesn\'t have b2g-info}');
+			clivas.clear();
+			clivas.line('{red:device "' + device + '" doesn\'t have b2g-info}');
+			done();
 			return;
 		}
-		var delta = Date.now() - started;
+
+		var lag = Date.now() - started;
 		var snapshot = new Snapshot(stdout);
+		var running = Object.keys(snapshot.apps).length;
+
+		if (running == 0) {
+			done('empty snapshot');
+			return;
+		}
 
 		clivas.clear();
-		clivas.line(device + ' {italic:(' + delta + ' ms)}');
+		clivas.line('{yellow:device:} ' + device + ' {italic:(' + lag + ' ms)}');
 		clivas.line('{yellow:{20:free (mb):}} {bold:{8:' +
 			(snapshot.mem.free || '-') + '}}');
 		clivas.line('{yellow:{20:cache (mb):}} {bold:{8:' +
@@ -68,10 +76,10 @@ function watch(done) {
 
 		Object.keys(snapshot.apps).forEach(function(pid) {
 			var app = snapshot.apps[pid];
-			if (!opts.hidden && app.name.charAt(0) == '(') {
+			if (app.name.charAt(0) == '(') {
 				return;
 			}
-			if (filter && filter.test(app.pid) && filter.test(app.name)) {
+			if (filter && (!filter.test(app.pid) && !filter.test(app.name))) {
 				return;
 			}
 			clivas.line('{6:' + app.pid + '} {15:' + app.name + '} {bold:{8:' +
@@ -84,9 +92,8 @@ function watch(done) {
 
 function nextWatch(err) {
 	if (err) {
+		clivas.line('{red:device "' + device + '"" disconnected}');
 		device = null;
-		clivas.clear();
-		clivas.line('waiting for device');
 	}
 	var bound = watch.bind(null, nextWatch);
 	if (!opts.interval) {
@@ -95,5 +102,7 @@ function nextWatch(err) {
 		setTimeout(bound, opts.interval);
 	}
 };
+
+clivas.line('{yellow:waiting for device}');
 
 watch(nextWatch);
