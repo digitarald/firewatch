@@ -15,26 +15,30 @@ node index.js
 
 ## Example output
 
+The numbers are in `megabyte` and update real-time; as fast as `b2g-info` can provide numbers (lag displayed in ms).
+
 ```
-04e07f8758dd6913
-free:                1460.8
-cache:               146.4
-pid  app             uss      pss
-177  b2g             70.3     76.2
-642  Homescreen      21.7     25.8
-835  Sketchbook Squa 12.9     15.2
-1104 Usage           14.1     16.4
-6912 Settings        17.0     19.6
-7054 Captain Rogers  38.1     45.5
+full_unagi (129 ms)
+free (mb):           23.1
+cache (mb):          54.0
+pid    app             uss      pss      vsize (mb)
+23071  b2g             53.2     55.8     173.7
+23134  Usage           10.1     12.4     62.7
+23165  Homescreen      11.5     14.1     67.2
+23219  Calculator      8.3      10.5     61.1
 ```
 
-The numbers update real-time (as fast as `b2g-info` can provide numbers). This display is available as soon as you plug in any device.
+**USS** *(unique set size)* is the set of pages that are unique to a process. This is the amount of memory that would be freed if the application was terminated right now.
+
+**PSS** *(proportional set size)* is the amount of memory shared with other processes, accounted in a way that the amount is divided evenly between the processes that share it. This is memory that would not be released if the process was terminated, but is indicative of the amount that this process is "contributing" to the overall memory load.
+
+http://elinux.org/Android_Memory_Usage
 
 ## Dependencies
 
  * `node` and `npm`
  * `ADB` in `$path`
- * A Firefox OS device
+ * A Firefox OS device with 1.1+
 
 ## Roadmap
 
