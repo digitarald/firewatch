@@ -1,24 +1,28 @@
 {
-  "name": "firewatch",
-  "version": "0.0.0",
-  "description": "Firefox OS memory watch",
-  "keywords": [
-    "firefoxos",
-    "firefox-os",
-    "b2g",
-    "b2g-info"
-  ],
-  "scripts": {
-    "test": "./node_modules/mocha/bin/mocha"
-  },
-  "author": "Harald Kirschner <harald@digitarald.com>",
-  "license": "MIT",
-  "dependencies": {
-    "clivas": "^0.1.4",
-    "nomnom": "^1.6.2"
-  },
-  "devDependencies": {
-    "mocha": "^1.18.2",
-    "should": "^3.2.0-beta1"
-  }
+	"name": "firewatch",
+	"version": "0.0.2",
+	"description": "Firefox OS memory watch",
+	"keywords": [
+		"firefoxos",
+		"firefox-os",
+		"b2g",
+		"b2g-info"
+	],
+	"main": "./index",
+	"bin": {
+		"firewatch": "index.js"
+	},
+	"scripts": {
+		"test": "./node_modules/mocha/bin/mocha"
+	},
+	"author": "Harald Kirschner <harald@digitarald.com>",
+	"license": "MIT",
+	"dependencies": {
+		"clivas": "^0.1.4",
+		"nomnom": "^1.6.2"
+	},
+	"devDependencies": {
+		"mocha": "^1.18.2",
+		"should": "^3.2.0-beta1"
+	}
 }

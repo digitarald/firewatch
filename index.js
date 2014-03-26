@@ -22,7 +22,6 @@ if (opts.app) {
 
 var device = null;
 
-
 clivas.cursor(false);
 
 function watch(done) {
