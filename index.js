@@ -68,12 +68,12 @@ function watch(done) {
 		}
 
 		clivas.clear();
-		clivas.line('{yellow:device:} ' + device + ' {italic:(' + lag + ' ms)}');
-		clivas.line('{yellow:{20:free (mb):}} {bold:{8:' +
+		clivas.line('{yellow:{11:device:}} ' + device + ' {italic:(' + lag + ' ms)}');
+		clivas.line('{yellow:{11:free (mb):}} {bold:{8:' +
 			(snapshot.mem.free || '-') + '}}');
-		clivas.line('{yellow:{20:cache (mb):}} {bold:{8:' +
+		clivas.line('{yellow:{11:cache (mb):}} {bold:{8:' +
 			(snapshot.mem.cache || '-') + '}}');
-		clivas.line('{yellow:{6:pid} {15:app} {8:uss} {8:pss} vsize} (mb)');
+		clivas.line('{yellow:{6:pid} {15:app} {8:uss} pss} (mb)');
 
 		Object.keys(snapshot.apps).forEach(function(pid) {
 			var app = snapshot.apps[pid];
@@ -84,7 +84,7 @@ function watch(done) {
 				return;
 			}
 			clivas.line('{6:' + app.pid + '} {15:' + app.name + '} {bold:{8:' +
-				app.uss + '} {8:' + app.pss + '}} {8:' + app.vsize + '}');
+				app.uss + '} {8:' + app.pss + '}}');
 		});
 
 		done();
