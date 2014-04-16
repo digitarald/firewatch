@@ -16,8 +16,16 @@ npm install -g firewatch
 
 ## Usage
 
+Command-line output:
+
 ```
 firewatch
+```
+
+Web UI
+
+```
+firewatch-server
 ```
 
 ### Output

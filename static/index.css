@@ -1,0 +1,67 @@
+* {
+	box-sizing: border-boz;
+}
+
+html {
+	font-size: 62.5%;
+	height: 100%;
+}
+
+body {
+	font: 1.6rem/1.625 sans-serif;
+	margin: 0;
+	padding: 0;
+	height: 100%;
+
+	display: flex;
+	align-items: top;
+	justify-content: center;
+}
+h1 {
+	line-height: 5rem;
+}
+h1 > div {
+	float: right;
+	color: #888;
+	font-size: 2rem;
+	line-height: inherit;
+	font-weight: normal;
+}
+h1 > div small {
+	font-size: inherit;
+}
+main {
+	flex: 1;
+	margin: 0 20px;
+	max-width: 960px;
+}
+table, svg {
+	width: 100%;
+}
+tbody {
+	overflow: scroll;
+	min-height: 5rem;
+	max-height: 20rem;
+}
+tbody th {
+	text-align: right;
+	font-weight: normal;
+}
+tbody td, tbody th {
+	padding: 0.2rem 0.6rem;
+}
+tfoot td {
+	text-align: right;
+}
+td small {
+	color: #888;
+}
+
+svg {
+	outline: 1px solid #eee;
+}
+svg .tick text {
+	z-index: 3;
+	font-size: 1.15rem;
+	color: #666;
+}
