@@ -4,64 +4,137 @@
 
 html {
 	font-size: 62.5%;
+}
+html, body {
 	height: 100%;
 }
-
 body {
-	font: 1.6rem/1.625 sans-serif;
+	font: 1.6rem/1.625 'Helvetica Neue', Helvetica, sans-serif;
 	margin: 0;
 	padding: 0;
-	height: 100%;
-
 	display: flex;
 	align-items: top;
 	justify-content: center;
+	user-select: none;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	overflow: hidden;
 }
-h1 {
-	line-height: 5rem;
+#content, main {
+	display: flex;
+	flex: 1;
+	flex-direction: column;
 }
-h1 > div {
-	float: right;
-	color: #888;
-	font-size: 2rem;
-	line-height: inherit;
+
+header table {
+}
+header table th, header table td {
+	padding-left: 1rem;
+	padding-right: 1rem;
+}
+header table th {
+	text-align: left;
+	min-width: 6rem;
 	font-weight: normal;
+	color: #888;
 }
-h1 > div small {
-	font-size: inherit;
+header table td {
+	text-align: right;
+	min-width: 6rem;
 }
+small {
+	color: #888;
+}
+
+h1 {
+	line-height: 1em;
+	padding: 0;
+	margin: 0;
+	flex: 1;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
 main {
 	flex: 1;
-	margin: 0 20px;
-	max-width: 960px;
+	margin: 1rem 2rem;
+	align-content: stretch;
 }
-table, svg {
+header {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	margin-bottom: 1rem;
+}
+article {
+	flex: 1;
+	display: flex;
+	align-content: stretch;
+}
+@media (max-width: 65rem) {
+	article {
+		flex-direction: column;
+	}
+}
+.graph {
+	flex: 1;
+	min-height: 10rem;
+	display: flex;
+	height: auto;
+}
+svg {
+	height: 100%;
 	width: 100%;
 }
-tbody {
-	overflow: scroll;
-	min-height: 5rem;
-	max-height: 20rem;
+table {
+	border-collapse: collapse;
 }
-tbody th {
-	text-align: right;
+table th {
+	overflow: hidden;
+	white-space: nowrap;
+}
+table td {
+	white-space: nowrap;
+}
+aside {
+	padding: 1rem 0 1em 1em;
+	align-self: center;
+}
+.apps-table {
+}
+.apps-table tbody th {
+	text-align: left;
 	font-weight: normal;
 }
-tbody td, tbody th {
-	padding: 0.2rem 0.6rem;
-}
-tfoot td {
+.apps-table tbody td {
 	text-align: right;
 }
-td small {
-	color: #888;
+.apps-table label {
+	display: block;
+	cursor: pointer;
+}
+.apps-table tr.hidden {
+	opacity: 0.2;
+}
+.apps-table tr.hidden .name {
+	text-decoration: line-through;
+}
+.apps-table tfoot td {
+	text-align: right;
 }
 
 svg {
 	outline: 1px solid #eee;
 }
 svg .tick text {
-	z-index: 3;
 	font-size: 1.15rem;
-	color: #666;
+	fill: rgba(0, 0, 0, 1);
+	stroke: rgba(255, 255, 255, 0.4);
+}
+svg .tick line {
+	fill: none;
+	stroke: rgba(0, 0, 0, 0.1);
+}
+svg .xticks .tick line {
+	stroke-dasharray: 5,5;
 }
