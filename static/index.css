@@ -29,17 +29,17 @@ body {
 header table {
 }
 header table th, header table td {
-	padding-left: 1rem;
-	padding-right: 1rem;
+	padding-left: 0.5rem;
+	padding-right: 0.5rem;
 }
 header table th {
-	text-align: left;
+	text-align: right;
 	min-width: 6rem;
 	font-weight: normal;
 	color: #888;
 }
 header table td {
-	text-align: right;
+	text-align: left;
 	min-width: 6rem;
 }
 small {
@@ -97,10 +97,17 @@ table td {
 	white-space: nowrap;
 }
 aside {
-	padding: 1rem 0 1em 1em;
-	align-self: center;
+	padding: 0 0 1em 1em;
+	overflow: auto;
 }
 .apps-table {
+}
+.apps-table .icon {
+	display: inline-block;
+	width: 1.5rem;
+	height: 4px;
+	margin-right: 0.4rem;
+	vertical-align: middle;
 }
 .apps-table tbody th {
 	text-align: left;
@@ -108,15 +115,31 @@ aside {
 }
 .apps-table tbody td {
 	text-align: right;
+	padding-left: 0.5rem;
+}
+.apps-table tbody td:not(:first-of-type) {
+
+}
+.apps-table tbody td > div {
+	font-size: 1rem;
+	line-height: 1.2rem;
+	display: block;
+	color: #888;
 }
 .apps-table label {
 	display: block;
 	cursor: pointer;
 }
+.apps-table tr.dead, .apps-table tr.system {
+	opacity: 0.5;
+}
+.apps-table tr.system .name {
+	font-style: italic;
+}
 .apps-table tr.hidden {
 	opacity: 0.2;
 }
-.apps-table tr.hidden .name {
+.apps-table tr.dead .name {
 	text-decoration: line-through;
 }
 .apps-table tfoot td {
