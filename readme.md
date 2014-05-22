@@ -69,8 +69,8 @@ Further reading: [emilics.com](http://emilics.com/blog/article/mconsumption.html
 
  * Checkout project
  * `npm install`
- * `node lib/index.js`
- * or server `node lib/server.js`
+ * for cli output: `node lib/index.js`
+ * for web UI: `node lib/server.js`
 
 ## Roadmap
 
