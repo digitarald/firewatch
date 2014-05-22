@@ -7,6 +7,7 @@ Real-time command-line memory monitor for Firefox OS devices. Polls [`b2g-info`]
  * `node` and `npm`
  * `adb` in `$path`
  * A Firefox OS device with 1.1+
+ * `python` for memory reports
 
 ## Installation
 
@@ -16,19 +17,31 @@ npm install -g firewatch
 
 ## Usage
 
-Command-line output:
-
-```
-firewatch
-```
-
-Web UI
+### Web UI
 
 ```
 firewatch-server
 ```
 
-### Output
+```
+Options:
+   -p, --port          Port to use  [8080]
+   -a, --address       Address to use  [0.0.0.0]
+   -o, --open          Open browser after starting the server  [false]
+   -v, --verbose       Verbose logging  [false]
+   -a, --adb-path      ADB executable [adb in $PATH]
+   -b, --b2g-path      B2G checkout (https://github.com/mozilla-b2g/B2G/)  […]
+   -p, --output-path   Directory for dumping logs, profiles, memory reports, etc. [tmp folder]
+   -d, --develop       For developing on Firewatch  [false]
+```
+
+![Screenshot](https://i.cloudup.com/gFBKQ-gXuL.png)
+
+### Command-line output
+
+```
+firewatch
+```
 
 The numbers are in `megabyte` and update real-time; as fast as `b2g-info` can provide numbers (lag displayed in ms).
 
@@ -56,12 +69,14 @@ Further reading: [emilics.com](http://emilics.com/blog/article/mconsumption.html
 
  * Checkout project
  * `npm install`
- * `node index.js`
+ * `node lib/index.js`
+ * or server `node lib/server.js`
 
 ## Roadmap
 
-1. App memory history
-  1. Keep killed apps
-  2. Show min/max and avg/mean for `USS`/`PSS`
-2. GUI & graphs
-3. about:memory details
+- [ ] Import dump from folder
+- [x] App memory history
+  - [x] Keep killed apps
+  - [x] Show min/max and avg/mean for `USS`/`PSS`
+- [x] GUI & graphs
+- [x] about:memory details
