@@ -1,0 +1,23 @@
+               |    megabytes    |
+NAME PID PPID CPU(s) NICE USS PSS  RSS VSIZE OOM_ADJ USER
+ b2g 287    1    0.3    0 7.6 8.4 10.6  45.5     -16 root
+
+System memory info:
+
+            Total 396.6 MB
+     Used - cache  37.3 MB
+  B2G procs (PSS)   8.4 MB
+    Non-B2G procs  28.9 MB
+     Free + cache 359.3 MB
+             Free 299.4 MB
+            Cache  59.9 MB
+
+Low-memory killer parameters:
+
+  notify_trigger 0 KB
+
+  oom_adj min_free
+        0  6144 KB
+        1  8192 KB
+        6 16384 KB
+       12 65536 KB

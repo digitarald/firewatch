@@ -1,0 +1,239 @@
+font-lg = 2.6rem
+font-md = 1.62rem
+font-sm = 1.3rem
+font-xs = 1rem
+line-height = 1.62
+color-default = #333
+color-muted = #888
+color-border = #eee
+gutter-lg = 2rem
+gutter-md = 1rem
+gutter-sm = 0.62rem
+
+*
+	box-sizing border-box
+
+html
+	font-size 62.5%
+html, body
+	height 100%
+body
+	font font-md/line-height 'Helvetica Neue', Helvetica, sans-serif
+	color color-default
+	margin 0
+	padding 0
+	display flex
+	align-items top
+	justify-content center
+	user-select none
+	overflow hidden
+small
+	color color-muted
+	font-size font-sm
+label, button, input[type='checkbox']
+	cursor pointer
+[disabled]
+	pointer-events none
+table
+	border-collapse collapse
+	th, td
+		overflow hidden
+		white-space nowrap
+		padding (gutter-sm / 4) 0
+		margin 0
+
+#content, main
+	display flex
+	flex 1
+	flex-direction column
+main
+	flex 1
+	margin gutter-md gutter-lg
+	align-content stretch
+header
+	display flex
+	align-items center
+	flex-wrap wrap
+	margin-bottom gutter-md
+	table
+		font-size font-sm
+		td, th
+			text-align right
+			min-width 8rem
+			padding 0 gutter-sm
+		th
+			text-align right
+			font-weight normal
+			color color-muted
+		td:last-child
+			padding-right 0
+h1
+	line-height font-lg + gutter-md
+	font-size font-lg
+	padding 0
+	margin 0
+	flex 1
+	white-space nowrap
+	overflow hidden
+	font-weight normal
+	i
+		font-size 2rem
+		color color-muted
+	> small
+		padding-left gutter-sm
+		font-size 2rem
+		color color-muted
+input[type='number']
+	display inline-block
+	border 1px solid color-border
+	width 7rem
+	font-size font-sm
+	color text-muted
+	line-height font-md
+	height font-md
+	padding-top 0
+	padding-bottom 0
+	&:focus
+		color color-default
+article
+	flex 1
+	display flex
+	align-content stretch
+.graph
+	flex 1
+	min-height 10rem
+	display flex
+	height auto
+svg
+	height 100%
+	width 100%
+aside
+	padding 0 gutter-md
+	overflow auto
+	display flex
+	flex-direction column
+	align-content stretch
+	section:first-child
+		margin-bottom gutter-md
+		flex 1
+	section:last-child
+		align-content bottom
+		padding gutter-sm gutter-md
+		padding-top gutter-md
+.hide
+	display none
+[title]
+	border-bottom 1px dashed #eee
+
+.apps-table
+	tr.split
+		color color-muted
+		cursor pointer
+		> *
+			padding-top gutter-sm
+		th
+			text-transform uppercase
+	td
+		text-align right
+		padding-right gutter-sm
+		&:last-child
+			padding-right 0
+	tbody
+		th
+			text-align left
+			font-weight normal
+			padding-right gutter-sm
+		td:first-child
+			cursor pointer
+		td > div
+			font-size font-xs
+			line-height font-sm
+			display block
+			color color-muted
+	.name
+		padding-right gutter-sm
+	// tr:not(.dead), tr:not(.system)
+	// 	.name
+	// 		font-weight bold
+	tr.hidden
+		opacity 0.4
+	tr.system .name
+		font-style italic
+	tr.dead .name
+		text-decoration line-through
+
+.prefs
+	margin-top gutter-md
+	// input[type='checkbox']
+	// 	display inline-block
+	// 	margin-right gutter-sm
+	label
+		display block
+		small
+			display inline-block
+			min-width 10rem
+
+.buttons
+	text-align left
+	vertical-align middle
+	.linklist
+		text-align right
+		max-width 7rem
+		white-space normal
+	label
+		display block
+.linklist
+	font-size font-sm
+	list-style none
+	margin 0
+	padding 0
+	li
+		display inline
+	&:not(:empty)
+		margin (gutter-sm / 2) 0 0
+	a
+		color inherit
+		text-decoration none
+		border-bottom 1px solid color-border
+	li:not(:last-child):after
+		content ', '
+		color color-muted
+	// li:not(:only-child):first-child:before
+	// 	content '▾ '
+	// 	color color-muted
+	// 	// opacity 0.4
+	// &:not(:hover)
+	// 	li:not(:only-child):first-child:after
+	// 		opacity 1
+	// 	li:not(:first-child)
+	// 		display none
+
+svg
+	outline 1px solid color-border
+	.tick text
+		font-size font-xs
+		fill rgba(0, 0, 0, 1)
+		stroke rgba(255, 255, 255, 0.4)
+	.tick line
+		fill none
+		stroke rgba(0, 0, 0, 0.1)
+	.xticks .tick line
+		stroke-dasharray 5,5
+
+@media (max-aspect-ratio 4/3)
+	article
+		flex-direction column
+
+	aside
+		padding-top gutter-md
+		flex-direction row
+		align-content stretch
+		section:first-child
+			margin-bottom 0
+			order 2
+			flex none
+			margin-right gutter-lg
+		section:last-child
+			flex 1
+			padding 0 0 0 gutter-lg
+			order 1
